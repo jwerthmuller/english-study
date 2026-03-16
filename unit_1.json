@@ -1,0 +1,154 @@
+{
+  "sets": [
+    {
+  "id": "unit_1",
+  "name": "Unit 1",
+  "cards": [
+    {
+      "id": "the_1",
+      "english": "the",
+      "spanish": "el/la",
+      "audioFile": "the.mp3"
+    },
+    {
+      "id": "be_2",
+      "english": "be",
+      "spanish": "ser, estar",
+      "audioFile": "be.mp3"
+    },
+    {
+      "id": "and_3",
+      "english": "and",
+      "spanish": "y",
+      "audioFile": "and.mp3"
+    },
+    {
+      "id": "of_4",
+      "english": "of",
+      "spanish": "de",
+      "audioFile": "of.mp3"
+    },
+    {
+      "id": "to_5",
+      "english": "to",
+      "spanish": "a",
+      "audioFile": "to.mp3"
+    },
+    {
+      "id": "a_6",
+      "english": "a",
+      "spanish": "un/una",
+      "audioFile": "a.mp3"
+    },
+    {
+      "id": "in_7",
+      "english": "in",
+      "spanish": "en",
+      "audioFile": "in.mp3"
+    },
+    {
+      "id": "have_8",
+      "english": "have",
+      "spanish": "tener",
+      "audioFile": "have.mp3"
+    },
+    {
+      "id": "it_9",
+      "english": "it",
+      "spanish": "ello, lo",
+      "audioFile": "it.mp3"
+    },
+    {
+      "id": "you_10",
+      "english": "you",
+      "spanish": "tú",
+      "audioFile": "you.mp3"
+    },
+    {
+      "id": "he_11",
+      "english": "he",
+      "spanish": "él",
+      "audioFile": "he.mp3"
+    },
+    {
+      "id": "for_12",
+      "english": "for",
+      "spanish": "para",
+      "audioFile": "for.mp3"
+    },
+    {
+      "id": "they_13",
+      "english": "they",
+      "spanish": "ellos",
+      "audioFile": "they.mp3"
+    },
+    {
+      "id": "not_14",
+      "english": "not",
+      "spanish": "no",
+      "audioFile": "not.mp3"
+    },
+    {
+      "id": "that_15",
+      "english": "that",
+      "spanish": "eso",
+      "audioFile": "that.mp3"
+    },
+    {
+      "id": "we_16",
+      "english": "we",
+      "spanish": "nosotros",
+      "audioFile": "we.mp3"
+    },
+    {
+      "id": "on_17",
+      "english": "on",
+      "spanish": "en",
+      "audioFile": "on.mp3"
+    },
+    {
+      "id": "with_18",
+      "english": "with",
+      "spanish": "con",
+      "audioFile": "with.mp3"
+    },
+    {
+      "id": "this_19",
+      "english": "this",
+      "spanish": "esto",
+      "audioFile": "this.mp3"
+    },
+    {
+      "id": "i_20",
+      "english": "I",
+      "spanish": "yo",
+      "audioFile": "i.mp3"
+    },
+    {
+      "id": "do_21",
+      "english": "do",
+      "spanish": "hacer",
+      "audioFile": "do.mp3"
+    },
+    {
+      "id": "as_22",
+      "english": "as",
+      "spanish": "como",
+      "audioFile": "as.mp3"
+    },
+    {
+      "id": "at_23",
+      "english": "at",
+      "spanish": "en",
+      "audioFile": "at.mp3"
+    },
+    {
+      "id": "she_24",
+      "english": "she",
+      "spanish": "ella",
+      "audioFile": "she.mp3"
+    }
+  ]
+}
+  ]
+}
