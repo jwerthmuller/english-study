@@ -37,21 +37,13 @@ async function loadVocabularyData() {
   try {
     const response = await fetch('data/unit_1.json');
     vocabularyData = await response.json();
-
-    vocabularyData.sets.forEach(set => {
-      set.cards.forEach(card => {
-        if (!card.difficulty) {
-          card.difficulty = "new";
-        }
-      });
-    });
-
-    console.log("Vocabulary data:", vocabularyData);
-
+    console.log('Vocabulary data loaded:', vocabularyData);
   } catch (error) {
-    console.error("Failed to load vocabulary data:", error);
+    console.error('Failed to load vocabulary data:', error);
+    alert('Error loading vocabulary data. Make sure data/unit_1.json exists.');
   }
 }
+
 // ============================================
 // EVENT LISTENERS
 // ============================================
@@ -124,10 +116,6 @@ function showStudyScreen() {
 function renderSetList() {
   const setList = document.getElementById('setList');
   setList.innerHTML = '';
-
-  if (!vocabularyData || !vocabularyData.sets) {
-  console.error("Vocabulary data not loaded correctly");
-  return;}
 
   vocabularyData.sets.forEach((set) => {
     const setCard = document.createElement('div');
