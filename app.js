@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadVocabularyData() {
   try {
-    const response = await fetch('data/vocabulary.json');
+    const response = await fetch('.data/vocabulary.json');
     vocabularyData = await response.json();
     console.log('Vocabulary data loaded:', vocabularyData);
   } catch (error) {
