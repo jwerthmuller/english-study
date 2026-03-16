@@ -117,6 +117,10 @@ function renderSetList() {
   const setList = document.getElementById('setList');
   setList.innerHTML = '';
 
+  if (!vocabularyData || !vocabularyData.sets) {
+  console.error("Vocabulary data not loaded correctly");
+  return;}
+
   vocabularyData.sets.forEach((set) => {
     const setCard = document.createElement('div');
     setCard.className = 'set-card';
