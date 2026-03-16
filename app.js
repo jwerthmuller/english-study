@@ -37,13 +37,21 @@ async function loadVocabularyData() {
   try {
     const response = await fetch('data/unit_1.json');
     vocabularyData = await response.json();
-    console.log('Vocabulary data loaded:', vocabularyData);
+
+    vocabularyData.sets.forEach(set => {
+      set.cards.forEach(card => {
+        if (!card.difficulty) {
+          card.difficulty = "new";
+        }
+      });
+    });
+
+    console.log("Vocabulary data:", vocabularyData);
+
   } catch (error) {
-    console.error('Failed to load vocabulary data:', error);
-    alert('Error loading vocabulary data. Make sure data/unit_1.json exists.');
+    console.error("Failed to load vocabulary data:", error);
   }
 }
-
 // ============================================
 // EVENT LISTENERS
 // ============================================
