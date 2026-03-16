@@ -81,10 +81,11 @@ function initializeEventListeners() {
   // Optional: toggle default side dynamically
   const toggleBtn = document.getElementById('toggleSideBtn');
   if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      defaultCardSide = defaultCardSide === 'english' ? 'spanish' : 'english';
-      displayCard(); // refresh current card with new default
-    });
+toggleBtn.addEventListener('click', () => {
+  defaultCardSide = defaultCardSide === 'english' ? 'spanish' : 'english';
+  displayCard();
+  toggleBtn.textContent = `Default: ${defaultCardSide.charAt(0).toUpperCase() + defaultCardSide.slice(1)}`;
+});
   }
 }
 
