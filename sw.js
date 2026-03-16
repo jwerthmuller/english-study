@@ -2,14 +2,14 @@
 // SERVICE WORKER - OFFLINE CACHING
 // ============================================
 
-const CACHE_NAME = 'english-study-v1';
+const CACHE_NAME = 'english-study-v2';
 const urlsToCache = [
   '/',
-  '/index.html',
-  '/app.js',
-  '/style.css',
-  '/sw.js',
-  '/data/unit_1.json',
+  './index.html',
+  './app.js',
+  './style.css',
+  './sw.js',
+  './data/unit_1.json',
   // Add any default audio files you want pre-cached
   // '/audio/hello.mp3',
   // '/audio/goodbye.mp3',
