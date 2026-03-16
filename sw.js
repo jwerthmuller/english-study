@@ -82,7 +82,17 @@ self.addEventListener('fetch', (event) => {
           });
       })
   );
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.filter(key => key !== CACHE_NAME)
+            .map(key => caches.delete(key))
+      )
+    )
+  );
 });
+
 
 // Optional: Listen for push notifications or background sync if you add those features later
 // self.addEventListener('push', (event) => { /* ... */ });
