@@ -1,11 +1,12 @@
 // ============================================
-// STATE MANAGEMENT
-// ============================================
-// ============================================
 // CONFIG: Default card side
 // ============================================
 
 let defaultCardSide = 'english'; // 'english' or 'spanish'
+
+// ============================================
+// STATE MANAGEMENT
+// ============================================
 let vocabularyData = null;
 let currentSetId = null;
 let currentCardIndex = 0;
