@@ -1,7 +1,11 @@
 // ============================================
 // STATE MANAGEMENT
 // ============================================
+// ============================================
+// CONFIG: Default card side
+// ============================================
 
+let defaultCardSide = 'english'; // 'english' or 'spanish'
 let vocabularyData = null;
 let currentSetId = null;
 let currentCardIndex = 0;
@@ -59,43 +63,28 @@ function initializeEventListeners() {
   });
 
   // Study screen controls
-  document.getElementById('backBtn').addEventListener('click', () => {
-    showSetSelectionScreen();
-  });
-
-  document.getElementById('revealBtn').addEventListener('click', () => {
-    revealCard();
-  });
-
-  document.getElementById('playAudioBtn').addEventListener('click', () => {
-    playAudio();
-  });
-
-  document.getElementById('nextCardBtn').addEventListener('click', () => {
-    nextCard();
-  });
-
-  document.getElementById('prevCardBtn').addEventListener('click', () => {
-    previousCard();
-  });
+  document.getElementById('backBtn').addEventListener('click', () => showSetSelectionScreen());
+  document.getElementById('revealBtn').addEventListener('click', () => flipCard());
+  document.getElementById('playAudioBtn').addEventListener('click', () => playAudio());
+  document.getElementById('nextCardBtn').addEventListener('click', () => nextCard());
+  document.getElementById('prevCardBtn').addEventListener('click', () => previousCard());
 
   // Feedback buttons
-  document.getElementById('difficultBtn').addEventListener('click', () => {
-    recordFeedback('difficult');
-  });
+  document.getElementById('difficultBtn').addEventListener('click', () => recordFeedback('difficult'));
+  document.getElementById('goodBtn').addEventListener('click', () => recordFeedback('good'));
+  document.getElementById('easyBtn').addEventListener('click', () => recordFeedback('easy'));
 
-  document.getElementById('goodBtn').addEventListener('click', () => {
-    recordFeedback('good');
-  });
+  // Click flashcard to flip back and forth
+  document.getElementById('flashcard').addEventListener('click', () => flipCard());
 
-  document.getElementById('easyBtn').addEventListener('click', () => {
-    recordFeedback('easy');
-  });
-
-  // Click card to flip
-  document.getElementById('flashcard').addEventListener('click', () => {
-    revealCard();
-  });
+  // Optional: toggle default side dynamically
+  const toggleBtn = document.getElementById('toggleSideBtn');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      defaultCardSide = defaultCardSide === 'english' ? 'spanish' : 'english';
+      displayCard(); // refresh current card with new default
+    });
+  }
 }
 
 // ============================================
@@ -168,15 +157,28 @@ function displayCard() {
 
   const card = currentCards[currentCardIndex];
 
-// Reset card state
-  document.getElementById('flashcard').classList.remove('flipped');
-  document.querySelector('.card-back').classList.add('hidden');
-  document.getElementById('revealBtn').classList.remove('hidden');
-  document.getElementById('feedbackBtns').classList.add('hidden');
+  const flashcard = document.getElementById('flashcard');
+  const cardBack = document.querySelector('.card-back');
+  const revealBtn = document.getElementById('revealBtn');
+  const feedbackBtns = document.getElementById('feedbackBtns');
 
-  // Update card content
-  document.getElementById('cardEnglish').textContent = card.english;
-  document.getElementById('cardSpanish').textContent = card.spanish;
+  // Reset card state
+  flashcard.classList.remove('flipped');
+  cardBack.classList.add('hidden');
+  revealBtn.classList.remove('hidden');
+  feedbackBtns.classList.add('hidden');
+
+  // Determine front and back sides
+  const frontSide = defaultCardSide;
+  const backSide = frontSide === 'english' ? 'spanish' : 'english';
+
+  flashcard.dataset.frontSide = frontSide;
+  flashcard.dataset.backSide = backSide;
+  flashcard.dataset.currentSide = frontSide;
+
+  // Set initial card text
+  document.getElementById('cardEnglish').textContent = frontSide === 'english' ? card.english : card.spanish;
+  document.getElementById('cardSpanish').textContent = backSide === 'english' ? card.english : card.spanish;
 
   // Update progress text
   const progress = currentCardIndex + 1;
@@ -187,19 +189,21 @@ function displayCard() {
   cardProgress[card.id].seen = true;
 }
 
-function revealCard() {
+function flipCard() {
   const flashcard = document.getElementById('flashcard');
-  const cardBack = document.querySelector('.card-back');
-  const revealBtn = document.getElementById('revealBtn');
-  const feedbackBtns = document.getElementById('feedbackBtns');
+  const card = currentCards[currentCardIndex];
 
-  // Toggle flip animation
-  flashcard.classList.add('flipped');
-  cardBack.classList.remove('hidden');
+  // Swap front/back side
+  const currentSide = flashcard.dataset.currentSide;
+  const newSide = currentSide === flashcard.dataset.frontSide ? flashcard.dataset.backSide : flashcard.dataset.frontSide;
+  flashcard.dataset.currentSide = newSide;
 
-  // Show feedback buttons, hide reveal button
-  revealBtn.classList.add('hidden');
-  feedbackBtns.classList.remove('hidden');
+  // Toggle CSS flip class for animation
+  flashcard.classList.toggle('flipped');
+
+  // Update visible content
+  document.getElementById('cardEnglish').textContent = newSide === 'english' ? card.english : card.spanish;
+  document.getElementById('cardSpanish').textContent = newSide === 'english' ? card.spanish : card.english;
 }
 
 function playAudio() {
