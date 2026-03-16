@@ -1,7 +1,7 @@
 // sw.js — robust, dynamic caching for GitHub Pages
 
 // Increment this whenever you update core assets
-const CACHE_NAME = 'english-study-v4';
+const CACHE_NAME = 'english-study-v5';
 const urlsToCache = [
   './',                // homepage
   './index.html',
