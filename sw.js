@@ -1,23 +1,20 @@
-// sw.js — robust offline-friendly service worker
+// sw.js — robust, dynamic caching for GitHub Pages
 
-// Increment this version whenever you update core assets
-const CACHE_NAME = 'english-study-v2';
+// Increment this whenever you update core assets
+const CACHE_NAME = 'english-study-v4';
 const urlsToCache = [
   './',                // homepage
   './index.html',
   './app.js',
   './style.css',
   './sw.js',
-  './data/unit_1.json',
-  // Add any default audio files here if needed
-  // './audio/hello.mp3',
 ];
 
 // ============================
 // Install: cache core assets
 // ============================
 self.addEventListener('install', event => {
-  console.log('[SW] Installing service worker and caching core assets...');
+  console.log('[SW] Installing and caching core assets...');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(urlsToCache))
@@ -37,31 +34,33 @@ self.addEventListener('activate', event => {
           .filter(key => key !== CACHE_NAME)
           .map(key => caches.delete(key))
       )
-    ).then(() => self.clients.claim()) // Take control of all pages
+    ).then(() => self.clients.claim())
   );
 });
 
 // ============================
-// Fetch: cache-first with network update
+// Fetch: cache-first with dynamic caching
 // ============================
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request).then(cachedResponse => {
-      // Start network fetch in parallel to update cache
+      // Try network in parallel to update cache dynamically
       const fetchPromise = fetch(event.request)
         .then(networkResponse => {
-          // Only update cache if we got a valid response
           if (networkResponse && networkResponse.status === 200) {
-            caches.open(CACHE_NAME).then(cache => {
-              cache.put(event.request, networkResponse.clone());
-            });
+            const url = event.request.url;
+
+            // Only dynamically cache JSON files under /data/ or audio files under /audio/
+            if (url.includes('/data/') || url.includes('/audio/')) {
+              caches.open(CACHE_NAME).then(cache => {
+                cache.put(event.request, networkResponse.clone());
+                console.log('[SW] Cached dynamically:', url);
+              });
+            }
           }
           return networkResponse;
         })
-        .catch(() => {
-          // Network failed (offline), fallback to cachedResponse
-          return cachedResponse;
-        });
+        .catch(() => cachedResponse); // Offline fallback
 
       // Return cached response immediately if available, else wait for network
       return cachedResponse || fetchPromise;
