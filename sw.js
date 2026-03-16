@@ -9,7 +9,7 @@ const urlsToCache = [
   '/app.js',
   '/style.css',
   '/sw.js',
-  '/data/vocabulary.json',
+  '/data/unit_1.json',
   // Add any default audio files you want pre-cached
   // '/audio/hello.mp3',
   // '/audio/goodbye.mp3',
