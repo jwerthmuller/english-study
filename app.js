@@ -17,7 +17,7 @@ let cardProgress = {}; // Track which cards user has seen
 // INITIALIZATION
 // ============================================
 
-document.addEventListener('DOMContentLoaded', async () => {
+/*document.addEventListener('DOMContentLoaded', async () => {
   // Register Service Worker for offline support
   if ('serviceWorker' in navigator) {
     try {
@@ -32,13 +32,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   await loadVocabularyData();
   initializeEventListeners();
   showSetSelectionScreen();
-});
+}); */
 
 // ============================================
 // DATA LOADING
 // ============================================
 
-async function loadVocabularyData() {
+/*async function loadVocabularyData() {
   try {
     const response = await fetch('data/unit_1.json');
     vocabularyData = await response.json();
@@ -47,13 +47,16 @@ async function loadVocabularyData() {
     console.error('Failed to load vocabulary data:', error);
     alert('Error loading vocabulary data. Make sure data/unit_1.json exists.');
   }
-}
+}*/
 
 // ============================================
 // EVENT LISTENERS
 // ============================================
 
 function initializeEventListeners() {
+  //Home page sections
+
+
   // Set selection
   document.getElementById('setList').addEventListener('click', (e) => {
     const setCard = e.target.closest('.set-card');
@@ -62,6 +65,8 @@ function initializeEventListeners() {
       startStudySession(setId);
     }
   });
+
+  //
 
   // Study screen controls
   document.getElementById('backBtn').addEventListener('click', () => showSetSelectionScreen());
