@@ -35,6 +35,11 @@ header h1 {
   margin-bottom: 8px;
 }
 
+header h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
 header p {
   font-size: 14px;
   opacity: 0.9;
