@@ -56,9 +56,9 @@ let screenId = null;
 
 function initializeEventListeners() {
   //Home page sections
-  document.getElementById('lessnBtn').addEventListener('onclick', () => showScreen('lessnScreen'));
-  document.getElementById('vocabBtn').addEventListener('onclick', () => showScreen('vocabScreen'));
-  document.getElementById('exerBtn').addEventListener('onclick', () => showScreen('exerScreen'));
+  document.getElementById('lessnBtn').addEventListener('click', () => showScreen('lessnScreen'));
+  document.getElementById('vocabBtn').addEventListener('click', () => showScreen('vocabScreen'));
+  document.getElementById('exerBtn').addEventListener('click', () => showScreen('exerScreen'));
 
   // Set selection
   /*document.getElementById('setList').addEventListener('click', (e) => {
