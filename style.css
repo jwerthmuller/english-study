@@ -47,11 +47,11 @@ header p {
 
 /* Button Management */
 .btn btn-secondary btn-lg btn-block {
-  color: #3BDEED
+  background-color: #3BDEED;
 }
 
 .btn-secondary {
-  color: #3BDEED
+  background-color: #3BDEED;
 }
 
 /* Screen Management */
