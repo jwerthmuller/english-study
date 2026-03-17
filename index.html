@@ -9,18 +9,38 @@
 <body>
   <div class="container">
     <header>
-      <h1>English Vocabulary</h1>
-      <p>Learn English offline</p>
+      <h1>English Study</h1>
+      <p>Learn to speak English</p>
     </header>
 
     <!-- Set Selection Screen -->
     <div id="setSelectionScreen" class="screen active">
-      <h2>Choose a topic:</h2>
+      <h2>Select an option:</h2>
       <div id="setList" class="set-list"></div>
     </div>
 
+    <!-- Create Major Sections -->
+    <section id="lessonSection">
+      <h2>Lessons</h2>
+      <p>Read English lessons</p>
+      <button id="lessnBtn" class="btn-secondary">Access Lessons</button>
+    </section>
+
+    <section id="vocabSection">
+      <h2>Vocabulary</h2>
+      <p>Learn and practice English words</p>
+      <button id="vocabBtn" class="btn-secondary">Access Vocabulary Tools</button>
+    </section>
+
+    <section id="exercisesSection">
+      <h2>Exercises</h2>
+      <p>Practice phrases and sentences</p>
+      <button id="exerBtn" class="btn-secondary">Access Exercises</button>
+    </section>
+
+
     <!-- Flashcard Study Screen -->
-    <div id="studyScreen" class="screen">
+    <div id="vocabScreen" class="screen">
       <div class="study-header">
         <button id="backBtn" class="btn-secondary">← Back</button>
         <span id="progressText" class="progress-text"></span>
