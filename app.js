@@ -98,11 +98,14 @@ toggleBtn.addEventListener('click', () => {
 // SCREEN MANAGEMENT ~(functions)~
 // ============================================
 
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(screen => {
-    screen.style.display = 'none';
+function showScreen(screenId) {
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
   });
-  document.getElementById(id).style.display = 'block';
+  const target = document.getElementById(screenId);
+  if (target) {
+    target.classList.add("active");
+  }
 }
 
 function showSetSelectionScreen() {
