@@ -55,20 +55,20 @@ let cardProgress = {}; // Track which cards user has seen
 
 function initializeEventListeners() {
   //Home page sections
-
+  document.getElementById('lessnBtn').addEventListener('click', () => showScreen());
+  document.getElementById('vocabBtn').addEventListener('click', () => showScreen());
+  document.getElementById('exerBtn').addEventListener('click', () => showScreen());
 
   // Set selection
-  document.getElementById('setList').addEventListener('click', (e) => {
+  /*document.getElementById('setList').addEventListener('click', (e) => {
     const setCard = e.target.closest('.set-card');
     if (setCard) {
       const setId = setCard.dataset.setId;
       startStudySession(setId);
     }
-  });
+  });*/
 
-  //
-
-  // Study screen controls
+  // flashcard screen controls
   document.getElementById('backBtn').addEventListener('click', () => showSetSelectionScreen());
   document.getElementById('revealBtn').addEventListener('click', () => flipCard());
   document.getElementById('playAudioBtn').addEventListener('click', () => playAudio());
@@ -95,8 +95,15 @@ toggleBtn.addEventListener('click', () => {
 }
 
 // ============================================
-// SCREEN MANAGEMENT
+// SCREEN MANAGEMENT ~(functions)~
 // ============================================
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(screen => {
+    screen.style.display = 'none';
+  });
+  document.getElementById(id).style.display = 'block';
+}
 
 function showSetSelectionScreen() {
   document.getElementById('setSelectionScreen').classList.add('active');
