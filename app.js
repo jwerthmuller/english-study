@@ -12,6 +12,7 @@ let currentSetId = null;
 let currentCardIndex = 0;
 let currentCards = [];
 let cardProgress = {}; // Track which cards user has seen
+let screenId = null;
 
 // ============================================
 // INITIALIZATION
@@ -55,9 +56,9 @@ let cardProgress = {}; // Track which cards user has seen
 
 function initializeEventListeners() {
   //Home page sections
-  document.getElementById('lessnBtn').addEventListener('click', () => showScreen());
-  document.getElementById('vocabBtn').addEventListener('click', () => showScreen());
-  document.getElementById('exerBtn').addEventListener('click', () => showScreen());
+  document.getElementById('lessnBtn').addEventListener('onclick', () => showScreen('lessnScreen'));
+  document.getElementById('vocabBtn').addEventListener('onclick', () => showScreen('vocabScreen'));
+  document.getElementById('exerBtn').addEventListener('onclick', () => showScreen('exerScreen'));
 
   // Set selection
   /*document.getElementById('setList').addEventListener('click', (e) => {
@@ -97,6 +98,7 @@ toggleBtn.addEventListener('click', () => {
 // ============================================
 // SCREEN MANAGEMENT ~(functions)~
 // ============================================
+
 
 function showScreen(screenId) {
   document.querySelectorAll(".screen").forEach(screen => {
